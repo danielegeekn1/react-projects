@@ -26,19 +26,20 @@ body {
   font-size: 1.2rem;
   padding: 0 1rem;
 }
-.container {
+.anime-data {
   width: 100%;
   margin: 100px auto;
   display: flex;
 }
 .animeInfo {
-  width: 320px;
+  width: 300px;
   height: 100%;
   background-color: #f9f6ee;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 11;
+  border-right: 1px solid green;
 }
 .anime-row {
   display: flex;
@@ -52,6 +53,9 @@ body {
 .anime-row .text-heading {
   margin-left: 20rem;
   margin-top: 1rem;
+  color: red;
+  font-weight: 400;
+  font-style: italic;
 }
 .card {
   width: 230px;

@@ -49,7 +49,7 @@ function App() {
         </div>
       </div>
 
-      <div className="container">
+      <div className="anime-data">
         <div className="animeInfo">
           {animeInfo && <AnimeInfo animeInfo={animeInfo} />}
         </div>
