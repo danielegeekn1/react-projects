@@ -22,7 +22,7 @@ const SearchWeather = () => {
       };
     };
     fetchWeather();
-  }, []);
+  }, [search]);
   let emoji = null;
   if (typeof data.main !== "undefined") {
     if (data.weather[0].main === "Clouds") {
@@ -51,7 +51,16 @@ const SearchWeather = () => {
   let month = d.toLocaleString("default", { month: "long" });
   let day = d.toLocaleString("default", { weekday: "long" });
   //Time
+  let time = d.toLocaleString([], {
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+  });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearch(input);
+  };
   return (
     <div>
       <div className="container mt-5">
@@ -64,7 +73,7 @@ const SearchWeather = () => {
                 alt="..."
               />
               <div className="card-img-overlay">
-                <form>
+                <form onSubmit={handleSubmit}>
                   <div className="input-group mb-4 mx-auto">
                     <input
                       type="search"
@@ -72,6 +81,10 @@ const SearchWeather = () => {
                       placeholder="Search city"
                       aria-label="Search city"
                       aria-describedby="basic-addon2"
+                      name="search"
+                      value={input}
+                      onChange={(e) => setInput(e.target.value)}
+                      required
                     />
 
                     <button
@@ -85,7 +98,11 @@ const SearchWeather = () => {
                 </form>
                 <div className="bg-dark bg-opacity-50 py-2">
                   <h2 className="card-title">{data.name}</h2>
-                  <p className="card-text lead">Thursday, October 14, 2021</p>
+                  <p className="card-text lead">
+                    {day}, {month} {date}, {year}
+                    <br />
+                    {time}
+                  </p>
                   <hr />
                   <i className={`fas ${emoji} fa-4x`}></i>
                   <h1 className="fw-bolder mb-5">{temp}&deg;C</h1>
